@@ -9,16 +9,7 @@
     {
         public FileReader(string path)
         {
-            this.Lines = new List<string>();
-            if (File.Exists(path))
-            {
-                StreamReader reader = new StreamReader(path);
-                do
-                {
-                    this.Lines.Add(reader.ReadLine());
-                }
-                while (reader.Peek() != -1);
-            }
+            Lines = File.ReadAllLines(path).ToList();
         }
 
         public List<string> Lines { get; set; }
